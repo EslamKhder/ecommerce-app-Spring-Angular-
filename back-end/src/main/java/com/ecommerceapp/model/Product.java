@@ -3,9 +3,7 @@ package com.ecommerceapp.model;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Product {
-
-    private Long id;
+public class Product extends BaseEntity {
 
     private String sky;
 

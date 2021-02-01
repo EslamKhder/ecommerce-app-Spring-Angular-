@@ -2,9 +2,7 @@ package com.ecommerceapp.model;
 
 import java.util.Set;
 
-public class Category {
-
-    private Long id;
+public class Category extends BaseEntity {
 
     private String categoryName;
 
