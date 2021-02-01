@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -15,6 +12,8 @@ import java.util.Date;
 @Data  // getter setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "prodect")
 public class Product extends BaseEntity {
 
     @Column(name = "sky")
