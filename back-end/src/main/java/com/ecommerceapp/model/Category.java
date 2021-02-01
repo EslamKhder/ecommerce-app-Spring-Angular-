@@ -22,4 +22,5 @@ public class Category extends BaseEntity {
     @JsonIgnore
     @OneToMany(mappedBy = "category",fetch = FetchType.LAZY)
     private Set<Product> products;
+
 }
