@@ -13,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "prodect")
+@Table(name = "product")
 public class Product extends BaseEntity {
 
     @Column(name = "sky")
