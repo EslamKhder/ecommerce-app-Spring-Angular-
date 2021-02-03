@@ -1,5 +1,5 @@
 <p>products works!</p>
-<table class="table" border="1">
+<table class="table table-dark table-striped">
 
     <thead class="thead-dark">
         <tr>
@@ -16,7 +16,7 @@
                 <img src="{{temp.imageUrl}}" height="50" />
             </td>
             <td class="align-middle">{{temp.name}}</td>
-            <td class="align-middle">{{temp.unitPrice}}</td>
+            <td class="align-middle">{{temp.unitPrice | currency:'USD'}}</td>
             <td class="align-middle">{{temp.unitsInStock}}</td>
         </tr>
 
