@@ -1,6 +1,6 @@
 export class Product {
 
-    id: number;
+    /*id: number;
     sku: string;
     name: string;
     description: string;
@@ -10,9 +10,9 @@ export class Product {
     unitsInStock: number;
     dateCreated: Date;
     lastUpdate: Date;
-
-    /*constructor(id: number,sku: string,name: string,description: string,unitPrice: number,imageUrl: string,
-                active: boolean,unitsInStock: number,dateCreated: Date,lastUpdate: Date){
-    }*/
+*/
+    constructor(public id: number,public sku: string,public name: string,public description: string,public unitPrice: number
+        ,public imageUrl: string,public active: boolean,public unitsInStock: number,publicdateCreated: Date,public lastUpdate: Date){
+    }
 
 }
