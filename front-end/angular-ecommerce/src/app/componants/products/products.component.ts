@@ -37,7 +37,7 @@ export class ProductsComponent implements OnInit {
   }
   listProductsCategories(){
     // @ts-ignore
-    this.idValue = +this.route.snapshot.paramMap.get("id");
+    this.idValue = +this.route.snapshot.paramMap.get('id');
     this.service.getProductsCategory(this.idValue).subscribe(
       data => {
         this.products = data
