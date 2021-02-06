@@ -15,4 +15,9 @@ export class ProductServiceService {
       map(response => response)
     );
   }
+  getProductsCategory(id: number): Observable<Product[]>{
+    return this.httpProducts.get<Product[]>(`http://localhost:8080/api/productsbycategory?id=${id}`).pipe(
+      map(response => response)
+    );
+  }
 }
