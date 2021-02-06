@@ -4,11 +4,9 @@ package com.ecommerceapp.controller;
 import com.ecommerceapp.model.Product;
 import com.ecommerceapp.service.ProductService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -22,6 +20,11 @@ public class ProductController {
     @GetMapping("products")
     public List<Product> getProducts(){
         return productService.getProducts();
+    }
+
+    @GetMapping("products/{id}")
+    public List<Product> getProductsByCategoryId(@PathVariable("id") Long id) {
+        return this.productService.getProductsByCategoryId(id);
     }
 
 }

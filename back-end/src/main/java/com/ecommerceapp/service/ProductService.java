@@ -9,16 +9,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class ProductService {
 
     private ProductRepository productRepository;
 
-    @Autowired
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
-
     public List<Product> getProducts(){
         return productRepository.findAll();
+    }
+
+    public List<Product> getProductsByCategoryId(Long id) {
+        return this.productRepository.findByCategoryId(id);
     }
 }
