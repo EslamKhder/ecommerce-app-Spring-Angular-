@@ -10,6 +10,8 @@ import {RouterModule, Routes} from '@angular/router';
 
 // http://localhost:4200/
 const routes: Routes = [
+  // http://localhost:4200/category/id
+  {path: 'category/:id', component:ProductsComponent},
   // http://localhost:4200/products
   {path: 'products', component:ProductsComponent},
   {path: '', component:ProductsComponent},
