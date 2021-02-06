@@ -16,7 +16,12 @@ export class ProductsComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getProducts()
+    this.route.paramMap.subscribe(
+      () => {
+        this.getProducts()
+      }
+    );
+
   }
 
   getProducts(){
