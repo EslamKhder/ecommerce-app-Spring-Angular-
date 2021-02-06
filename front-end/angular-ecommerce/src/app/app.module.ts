@@ -6,7 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './componants/products/products.component';
 import { CategoryComponent } from './componants/category/category.component';
+import {RouterModule, Routes} from '@angular/router';
 
+// http://localhost:4200/
+const routes: Routes = [
+  // http://localhost:4200/products
+  {path: 'products', component:ProductsComponent},
+  {path: '', component:ProductsComponent},
+  {path: '**', component:CategoryComponent},
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,6 +22,7 @@ import { CategoryComponent } from './componants/category/category.component';
     CategoryComponent
   ],
   imports: [
+    RouterModule.forRoot(routes),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
