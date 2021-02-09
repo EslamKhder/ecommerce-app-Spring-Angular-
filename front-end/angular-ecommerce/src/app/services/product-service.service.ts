@@ -20,4 +20,9 @@ export class ProductServiceService {
       map(response => response)
     );
   }
+  getProductsByKey(key: string): Observable<Product[]>{
+    return this.httpProducts.get<Product[]>(`http://localhost:8080/api/productskey?key=${key}`).pipe(
+      map(response => response)
+    );
+  }
 }
