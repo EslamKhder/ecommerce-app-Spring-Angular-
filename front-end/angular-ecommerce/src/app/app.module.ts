@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ProductsComponent } from './componants/products/products.component';
 import { CategoryComponent } from './componants/category/category.component';
 import {RouterModule, Routes} from '@angular/router';
+import { SearchComponent } from './componants/search/search.component';
 
 // http://localhost:4200/
 const routes: Routes = [
@@ -21,7 +22,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ProductsComponent,
-    CategoryComponent
+    CategoryComponent,
+    SearchComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
