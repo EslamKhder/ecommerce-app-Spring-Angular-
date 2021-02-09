@@ -16,18 +16,18 @@ export class ProductServiceService {
       map(response => response)
     );
   }
-  getProducts(): Observable<Product[]>{
-    return this.httpProducts.get<Product[]>("http://localhost:8080/api/products").pipe(
+  getProducts(page: number,size: number): Observable<Product[]>{
+    return this.httpProducts.get<Product[]>(`http://localhost:8080/api/products?page=${page}&size=${size}`).pipe(
       map(response => response)
     );
   }
-  getProductsCategory(id: number): Observable<Product[]>{
-    return this.httpProducts.get<Product[]>(`http://localhost:8080/api/productsbycategory?id=${id}`).pipe(
+  getProductsCategory(id: number,page: number,size: number): Observable<Product[]>{
+    return this.httpProducts.get<Product[]>(`http://localhost:8080/api/productsbycategory?id=${id}&page=${page}&size=${size}`).pipe(
       map(response => response)
     );
   }
-  getProductsByKey(key: string): Observable<Product[]>{
-    return this.httpProducts.get<Product[]>(`http://localhost:8080/api/productskey?key=${key}`).pipe(
+  getProductsByKey(key: string,page: number,size: number): Observable<Product[]>{
+    return this.httpProducts.get<Product[]>(`http://localhost:8080/api/productskey?key=${key}&page=${page}&size=${size}`).pipe(
       map(response => response)
     );
   }
