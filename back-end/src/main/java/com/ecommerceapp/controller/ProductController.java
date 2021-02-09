@@ -18,18 +18,18 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("products")
-    public List<Product> getProducts(){
-        return productService.getProducts();
+    public List<Product> getProducts(@RequestParam int page,@RequestParam int size){
+        return productService.getProducts(page,size);
     }
 
     @GetMapping("productsbycategory")
-    public List<Product> getProductsByCategoryId(@RequestParam Long id) {
-        return this.productService.getProductsByCategoryId(id);
+    public List<Product> getProductsByCategoryId(@RequestParam Long id,@RequestParam int page,@RequestParam int size) {
+        return this.productService.getProductsByCategoryId(id,page,size);
     }
 
     @GetMapping("productskey")
-    public List<Product> getProductsByKeyWord(@RequestParam String key){
-        return productService.getProductsByKeyWord(key);
+    public List<Product> getProductsByKeyWord(@RequestParam String key,@RequestParam int page,@RequestParam int size){
+        return productService.getProductsByKeyWord(key,page,size);
     }
     @GetMapping("product")
     public Product getProductById(@RequestParam Long id){
