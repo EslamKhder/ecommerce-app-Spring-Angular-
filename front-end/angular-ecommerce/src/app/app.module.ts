@@ -17,8 +17,9 @@ const routes: Routes = [
   {path: 'search/:key', component:ProductsComponent},
   // http://localhost:4200/products
   {path: 'products', component:ProductsComponent},
+  // http://localhost:4200/
   {path: '', component:ProductsComponent},
-  {path: '**', component:CategoryComponent},
+  {path: '**', component:ProductsComponent},
 ];
 @NgModule({
   declarations: [
