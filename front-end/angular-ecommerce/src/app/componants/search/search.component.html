@@ -2,7 +2,7 @@
 <form class="form-header" onsubmit="return false;" method="GET">
 
   <input #key class="au-input au-input-xl" type="text" name="search"
-         placeholder="Search for data ..." />
+         (keyup)="doSearch(key.value)" placeholder="Search for data ..." />
   <button (click)="doSearch(key.value)" class="au-btn-submit" type="submit">
     Search
   </button>
