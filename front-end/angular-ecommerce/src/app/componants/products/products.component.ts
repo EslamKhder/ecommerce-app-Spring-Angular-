@@ -40,7 +40,7 @@ export class ProductsComponent implements OnInit {
   }
 
   listProducts(){
-    this.service.getProducts(this.page,this.size).subscribe(
+    this.service.getProducts(this.page - 1,this.size).subscribe(
       data => {
         this.products = data
       }
@@ -49,7 +49,7 @@ export class ProductsComponent implements OnInit {
   listProductsCategories(){
     // @ts-ignore
     this.idValue = +this.route.snapshot.paramMap.get('id');
-    this.service.getProductsCategory(this.idValue,this.page,this.size).subscribe(
+    this.service.getProductsCategory(this.idValue,this.page - 1,this.size).subscribe(
       data => {
         this.products = data
       }
@@ -58,7 +58,7 @@ export class ProductsComponent implements OnInit {
   listProductsMyKey(){
     // @ts-ignore
     this.keyValue = this.route.snapshot.paramMap.get('key');
-    this.service.getProductsByKey(this.keyValue,this.page,this.size).subscribe(
+    this.service.getProductsByKey(this.keyValue,this.page - 1,this.size).subscribe(
       data => {
         this.products = data
       }
@@ -66,7 +66,6 @@ export class ProductsComponent implements OnInit {
   }
 
   done() {
-    //alert(this.page)
     this.getProducts()
   }
 }
