@@ -16,6 +16,8 @@ const routes: Routes = [
   {path: 'category/:id', component:ProductsComponent},
   // http://localhost:4200/search/key
   {path: 'search/:key', component:ProductsComponent},
+  // http://localhost:4200/product/id
+  {path: 'product/:id', component:ProductDetailsComponent},
   // http://localhost:4200/products
   {path: 'products', component:ProductsComponent},
   // http://localhost:4200/

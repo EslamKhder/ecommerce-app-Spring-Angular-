@@ -12,7 +12,7 @@ export class ProductServiceService {
 
 
   getProductById(id: number): Observable<Product> {
-    return this.httpProducts.get<Product>(`http://localhost:8080/api/products?=${id}`).pipe(
+    return this.httpProducts.get<Product>(`http://localhost:8080/api/product?id=${id}`).pipe(
       map(response => response)
     );
   }

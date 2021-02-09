@@ -1,18 +1,12 @@
 export class Product {
 
-    /*id: number;
-    sku: string;
-    name: string;
-    description: string;
-    unitPrice: number;
-    imageUrl: string;
-    active: boolean;
-    unitsInStock: number;
-    dateCreated: Date;
-    lastUpdate: Date;
-*/
-    constructor(public id: number,public sku: string,public name: string,public description: string,public unitPrice: number
-        ,public imageUrl: string,public active: boolean,public unitsInStock: number,publicdateCreated: Date,public lastUpdate: Date){
-    }
-
+    id: number | undefined;
+    name: string | undefined;
+    description: string | undefined;
+    unitPrice: number | undefined;
+    imageUrl: string | undefined;
+    active: boolean | undefined;
+    unitsInStock: number | undefined;
+    dateCreated: Date | undefined;
+    lastUpdate: Date | undefined;
 }
