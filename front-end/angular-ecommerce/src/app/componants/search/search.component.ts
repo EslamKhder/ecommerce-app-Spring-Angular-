@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from '../../model/product';
 import {ProductServiceService} from '../../services/product-service.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -11,17 +12,18 @@ export class SearchComponent implements OnInit {
 
   products: Product[] = [];
 
-  constructor(private service: ProductServiceService) { }
+  constructor(private service: ProductServiceService,private router: Router) { }
 
   ngOnInit(): void {
   }
 
   doSearch(key: string) {
-    console.log(key)
+    this.router.navigateByUrl(`/search/${key}`)
+    /*console.log(key)
     this.service.getProductsByKey(key).subscribe(
       data => {
         this.products = data
       }
-    );
+    );*/
   }
 }

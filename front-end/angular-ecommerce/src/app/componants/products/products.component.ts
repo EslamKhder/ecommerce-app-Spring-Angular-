@@ -12,6 +12,7 @@ export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
   idValue: number = 0;
+  keyValue: string = "";
   constructor(private service: ProductServiceService,
               private route: ActivatedRoute) { }
 
@@ -25,10 +26,13 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts(){
-    let result = this.route.snapshot.paramMap.has("id");
-    if(result){
+    let resultId = this.route.snapshot.paramMap.has("id");
+    let resultKey = this.route.snapshot.paramMap.has("key");
+    if(resultId){
       this.listProductsCategories();
-    } else {
+    }else if(resultKey) {
+      this.listProductsMyKey();
+    }else {
       this.listProducts();
     }
   }
@@ -49,4 +53,14 @@ export class ProductsComponent implements OnInit {
       }
     );
   }
+  listProductsMyKey(){
+    // @ts-ignore
+    this.keyValue = this.route.snapshot.paramMap.get('key');
+    this.service.getProductsByKey(this.keyValue).subscribe(
+      data => {
+        this.products = data
+      }
+    )
+  }
+
 }
