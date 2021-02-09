@@ -9,6 +9,7 @@ import { CategoryComponent } from './componants/category/category.component';
 import {RouterModule, Routes} from '@angular/router';
 import { SearchComponent } from './componants/search/search.component';
 import { ProductDetailsComponent } from './componants/product-details/product-details.component';
+import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 
 // http://localhost:4200/
 const routes: Routes = [
@@ -36,7 +37,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
