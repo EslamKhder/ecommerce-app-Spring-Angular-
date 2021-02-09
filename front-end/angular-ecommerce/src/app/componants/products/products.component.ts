@@ -22,7 +22,6 @@ export class ProductsComponent implements OnInit {
         this.getProducts()
       }
     );
-
   }
 
   getProducts(){
