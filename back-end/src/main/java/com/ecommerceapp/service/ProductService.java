@@ -21,4 +21,8 @@ public class ProductService {
     public List<Product> getProductsByCategoryId(Long id) {
         return this.productRepository.findByCategoryId(id);
     }
+
+    public List<Product> getProductsByKeyWord(String key){
+        return productRepository.findByNameContaining(key);
+    }
 }
