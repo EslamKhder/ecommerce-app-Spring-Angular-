@@ -10,6 +10,12 @@ export class ProductServiceService {
 
   constructor(private httpProducts: HttpClient) { }
 
+
+  getProductById(id: number): Observable<Product> {
+    return this.httpProducts.get<Product>(`http://localhost:8080/api/products?=${id}`).pipe(
+      map(response => response)
+    );
+  }
   getProducts(): Observable<Product[]>{
     return this.httpProducts.get<Product[]>("http://localhost:8080/api/products").pipe(
       map(response => response)
