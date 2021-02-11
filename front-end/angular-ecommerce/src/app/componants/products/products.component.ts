@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
   keyValue: string = "";
   page: number = 0; // 0 1 2 3 4 5 6 7 8 9
   size: number = 10;
-  numElement: number = 100;
+  numElement: number = 100; //
   constructor(private service: ProductServiceService,
               private route: ActivatedRoute) { }
 

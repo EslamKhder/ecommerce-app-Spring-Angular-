@@ -12,5 +12,11 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Long> {
     public List<Product> findByCategoryId(Long id, Pageable pageable);
 
-    public List<Product> findByNameContaining(String keyword, Pageable pageable); // sh
+    public List<Product> findByNameContaining(String keyword, Pageable pageable);
+
+    @Query("select COUNT (id) FROM Product WHERE category.id = ?1")
+    public long getProductsSizeByCategoryId(long id);
+
+    @Query("SELECT COUNT (id) FROM Product WHERE name LIKE %?1%") // key%  %key %key%
+    public long getProductsSizeByKey(String key);
 }

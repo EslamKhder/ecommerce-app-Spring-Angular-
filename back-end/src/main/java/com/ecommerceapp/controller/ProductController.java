@@ -35,4 +35,19 @@ public class ProductController {
     public Product getProductById(@RequestParam Long id){
         return this.productService.getProductById(id);
     }
+
+    @GetMapping("productssize")
+    public long getProductsLength(){
+        return productService.getProductsLength();
+    }
+
+    @GetMapping("sizebycategoryid")
+    public long getProductsSizeByCategoryId(@RequestParam long id){
+        return productService.getProductsSizeByCategoryId(id);
+    }
+
+    @GetMapping("productssizebykey")
+    public long getProductsSizeByKey(@RequestParam String key){
+        return productService.getProductsSizeByKey(key);
+    }
 }

@@ -32,4 +32,14 @@ public class ProductService {
     public Product getProductById(Long id){
         return this.productRepository.findById(id).get();
     }
+
+    public long getProductsLength(){
+        return productRepository.count();
+    }
+    public long getProductsSizeByCategoryId(long id) {
+        return productRepository.getProductsSizeByCategoryId(id);
+    }
+    public long getProductsSizeByKey(String key){
+        return productRepository.getProductsSizeByKey(key);
+    }
 }
