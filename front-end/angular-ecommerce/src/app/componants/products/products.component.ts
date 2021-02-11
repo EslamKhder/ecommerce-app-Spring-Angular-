@@ -13,7 +13,7 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   idValue: number = 0;
   keyValue: string = "";
-  page: number = 0; // 0 1 2 3 4 5 6 7 8 9
+  page: number = 1; // 0 1 2 3 4 5 6 7 8 9
   size: number = 10;
   numElement: number = 0; //
   constructor(private service: ProductServiceService,
@@ -102,5 +102,9 @@ export class ProductsComponent implements OnInit {
   editPageSize(event: Event) {
     this.size = +(<HTMLInputElement>event.target).value
     this.getProducts()
+  }
+
+  addToCart(temp: Product) {
+    //console.log(temp.name + "  " + temp.unitPrice)
   }
 }
