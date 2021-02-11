@@ -17,7 +17,8 @@ export class ProductsComponent implements OnInit {
   size: number = 10;
   numElement: number = 0; //
   constructor(private service: ProductServiceService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(
@@ -27,26 +28,27 @@ export class ProductsComponent implements OnInit {
     );
   }
 
-  getProducts(){
+  getProducts() {
     let resultId = this.route.snapshot.paramMap.has("id");
     let resultKey = this.route.snapshot.paramMap.has("key");
-    if(resultId){
+    if (resultId) {
       this.listProductsCategories();
-    }else if(resultKey) {
+    } else if (resultKey) {
       this.listProductsByKey();
-    }else {
+    } else {
       this.listProducts();
     }
   }
 
-  listProducts(){
+  listProducts() {
     this.getProductsLength()
-    this.service.getProducts(this.page - 1,this.size).subscribe(
+    this.service.getProducts(this.page - 1, this.size).subscribe(
       data => {
         this.products = data
       }
     );
   }
+
   getProductsLength() {
     this.service.getProductsSize().subscribe(
       data => {
@@ -55,11 +57,11 @@ export class ProductsComponent implements OnInit {
     )
   }
 
-  listProductsCategories(){
+  listProductsCategories() {
     // @ts-ignore
     this.idValue = +this.route.snapshot.paramMap.get('id');
     this.getProductsLengthByCategoryId();
-    this.service.getProductsCategory(this.idValue,this.page - 1,this.size).subscribe(
+    this.service.getProductsCategory(this.idValue, this.page - 1, this.size).subscribe(
       data => {
         this.products = data
       }
@@ -73,17 +75,19 @@ export class ProductsComponent implements OnInit {
       }
     )
   }
-  listProductsByKey(){
+
+  listProductsByKey() {
     // @ts-ignore
     this.keyValue = this.route.snapshot.paramMap.get('key');
     this.getProductsLengthByKey()
-    this.service.getProductsByKey(this.keyValue,this.page - 1,this.size).subscribe(
+    this.service.getProductsByKey(this.keyValue, this.page - 1, this.size).subscribe(
       data => {
         this.products = data
       }
     )
   }
-  getProductsLengthByKey(){
+
+  getProductsLengthByKey() {
     this.service.getProductsSizeByKey(this.keyValue).subscribe(
       data => {
         this.numElement = data
@@ -92,6 +96,11 @@ export class ProductsComponent implements OnInit {
   }
 
   done() {
+    this.getProducts()
+  }
+
+  editPageSize(event: Event) {
+    this.size = +(<HTMLInputElement>event.target).value
     this.getProducts()
   }
 }
