@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
   keyValue: string = "";
   page: number = 0; // 0 1 2 3 4 5 6 7 8 9
   size: number = 10;
-  numElement: number = 100; //
+  numElement: number = 0; //
   constructor(private service: ProductServiceService,
               private route: ActivatedRoute) { }
 
@@ -33,34 +33,60 @@ export class ProductsComponent implements OnInit {
     if(resultId){
       this.listProductsCategories();
     }else if(resultKey) {
-      this.listProductsMyKey();
+      this.listProductsByKey();
     }else {
       this.listProducts();
     }
   }
 
   listProducts(){
+    this.getProductsLength()
     this.service.getProducts(this.page - 1,this.size).subscribe(
       data => {
         this.products = data
       }
     );
   }
+  getProductsLength() {
+    this.service.getProductsSize().subscribe(
+      data => {
+        this.numElement = data
+      }
+    )
+  }
+
   listProductsCategories(){
     // @ts-ignore
     this.idValue = +this.route.snapshot.paramMap.get('id');
+    this.getProductsLengthByCategoryId();
     this.service.getProductsCategory(this.idValue,this.page - 1,this.size).subscribe(
       data => {
         this.products = data
       }
     );
   }
-  listProductsMyKey(){
+
+  getProductsLengthByCategoryId() {
+    this.service.getProductsSizeByCategoryId(this.idValue).subscribe(
+      data => {
+        this.numElement = data
+      }
+    )
+  }
+  listProductsByKey(){
     // @ts-ignore
     this.keyValue = this.route.snapshot.paramMap.get('key');
+    this.getProductsLengthByKey()
     this.service.getProductsByKey(this.keyValue,this.page - 1,this.size).subscribe(
       data => {
         this.products = data
+      }
+    )
+  }
+  getProductsLengthByKey(){
+    this.service.getProductsSizeByKey(this.keyValue).subscribe(
+      data => {
+        this.numElement = data
       }
     )
   }

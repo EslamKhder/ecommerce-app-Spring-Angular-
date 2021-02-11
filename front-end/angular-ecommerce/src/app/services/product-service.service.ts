@@ -37,12 +37,12 @@ export class ProductServiceService {
     );
   }
   getProductsSizeByCategoryId(id: number): Observable<number>{
-    return this.httpProducts.get<number>(`http://localhost:8080/api/productskey?id=${id}`).pipe(
+    return this.httpProducts.get<number>(`http://localhost:8080/api/sizebycategoryid?id=${id}`).pipe(
       map(response => response)
     );
   }
   getProductsSizeByKey(key: string): Observable<number>{
-    return this.httpProducts.get<number>(`http://localhost:8080/api/productskey?key=${key}`).pipe(
+    return this.httpProducts.get<number>(`http://localhost:8080/api/productssizebykey?key=${key}`).pipe(
       map(response => response)
     );
   }
