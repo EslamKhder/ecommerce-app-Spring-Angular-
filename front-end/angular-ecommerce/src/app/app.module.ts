@@ -10,6 +10,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { SearchComponent } from './componants/search/search.component';
 import { ProductDetailsComponent } from './componants/product-details/product-details.component';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+import { CartStatusComponent } from './componants/cart-status/cart-status.component';
 
 // http://localhost:4200/
 const routes: Routes = [
@@ -31,7 +32,8 @@ const routes: Routes = [
     ProductsComponent,
     CategoryComponent,
     SearchComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartStatusComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
