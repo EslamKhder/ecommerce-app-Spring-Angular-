@@ -43,5 +43,16 @@ export class CartServiceService {
     }
     this.totalQuantity = totalQuantityValue;
     this.totalPrice = totalPriceValue;
+    //this.cartData();
   }
+
+  /*cartData() {
+    let totalPriceValue: number = 0;
+    for (let temp of this.cartItems) {
+      // @ts-ignore
+      totalPriceValue += temp.quantity * temp.unitPrice;
+      console.log(`name : ${temp.name} totalPriceValue = ${totalPriceValue} Qu : ${temp.quantity}`)
+    }
+  }
+  */
 }
