@@ -7,6 +7,8 @@ import {CartItem} from '../model/cart-item';
 export class CartServiceService {
 
   cartItems : CartItem[] = [];
+  totalQuantity: number = 0;
+  totalPrice: number = 0;
 
   constructor() { }
 
@@ -32,6 +34,14 @@ export class CartServiceService {
   }
 
   private computeCartTotals() {
-
+    let totalQuantityValue: number = 0;
+    let totalPriceValue: number = 0;
+    for (let temp of this.cartItems) {
+      totalQuantityValue += temp.quantity;
+      // @ts-ignore
+      totalPriceValue += temp.quantity * temp.unitPrice;
+    }
+    this.totalQuantity = totalQuantityValue;
+    this.totalPrice = totalPriceValue;
   }
 }
