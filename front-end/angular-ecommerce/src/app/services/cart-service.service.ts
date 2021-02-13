@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {CartItem} from '../model/cart-item';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,8 +8,8 @@ import {CartItem} from '../model/cart-item';
 export class CartServiceService {
 
   cartItems : CartItem[] = [];
-  totalQuantity: number = 0;
-  totalPrice: number = 0;
+  totalQuantity: Subject<number> = new Subject<number>();
+  totalPrice: Subject<number> = new Subject<number>();
 
   constructor() { }
 
@@ -41,8 +42,10 @@ export class CartServiceService {
       // @ts-ignore
       totalPriceValue += temp.quantity * temp.unitPrice;
     }
-    this.totalQuantity = totalQuantityValue;
-    this.totalPrice = totalPriceValue;
+    this.totalQuantity.next(totalQuantityValue)
+    this.totalPrice.next(totalPriceValue)
+    //this.totalQuantity = totalQuantityValue;
+    //this.totalPrice = totalPriceValue;
     //this.cartData();
   }
 
