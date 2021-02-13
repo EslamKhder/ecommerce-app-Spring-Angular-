@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Product} from '../../model/product';
 
 @Component({
   selector: 'app-cart-status',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart-status.component.css']
 })
 export class CartStatusComponent implements OnInit {
+
+  price: number = 0;
+  total: number = 0;
 
   constructor() { }
 
