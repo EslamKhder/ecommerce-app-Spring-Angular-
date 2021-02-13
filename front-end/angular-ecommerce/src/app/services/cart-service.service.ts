@@ -6,7 +6,32 @@ import {CartItem} from '../model/cart-item';
 })
 export class CartServiceService {
 
-  products : CartItem[] = [];
+  cartItems : CartItem[] = [];
 
   constructor() { }
+
+  addToCart(theCartItem: CartItem){
+    let alreadyExistInCart: boolean = false;
+    // @ts-ignore
+    let existingCartItem: CartItem = undefined;
+    if(this.cartItems.length > 0){
+      for (let temp of this.cartItems) {
+        if(temp.id === theCartItem.id){
+          existingCartItem = temp;
+          break;
+        }
+      }
+    }
+    alreadyExistInCart = (existingCartItem != undefined);
+    if(alreadyExistInCart){
+      existingCartItem.quantity++;
+    } else {
+      this.cartItems.push(theCartItem)
+    }
+    this.computeCartTotals();
+  }
+
+  private computeCartTotals() {
+
+  }
 }
