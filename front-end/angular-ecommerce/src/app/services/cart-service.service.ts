@@ -48,4 +48,20 @@ export class CartServiceService {
     this.totalPrice.next(totalPriceValue)
   }
 
+  removeItem(temp: CartItem){ // qu = 2
+    temp.quantity--;  // qu = 1
+    if(temp.quantity === 0){
+      this.remove(temp);
+    } else {
+      this.computeCartTotals();
+    }
+  }
+
+  private remove(temp: CartItem) {
+    const index = this.cartItems.findIndex(tempIt => temp.id === tempIt.id);
+    if(index > -1){
+      this.cartItems.splice(index,1);
+      this.computeCartTotals();
+    }
+  }
 }
