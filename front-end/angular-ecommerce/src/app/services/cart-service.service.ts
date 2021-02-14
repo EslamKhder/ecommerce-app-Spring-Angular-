@@ -36,7 +36,7 @@ export class CartServiceService {
     this.computeCartTotals();
   }
 
-  private computeCartTotals() {
+  public computeCartTotals() {
     let totalQuantityValue: number = 0;
     let totalPriceValue: number = 0;
     for (let temp of this.cartItems) {

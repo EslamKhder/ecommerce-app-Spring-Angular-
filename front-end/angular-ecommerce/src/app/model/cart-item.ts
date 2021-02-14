@@ -4,7 +4,7 @@ export class CartItem {
 
   id: number | undefined;
   name: string | undefined;
-  unitPrice: number | undefined;
+  unitPrice: number;
   imageUrl: string | undefined;
   quantity: number;
 
@@ -12,6 +12,7 @@ export class CartItem {
   constructor(product: Product) {
     this.id = product.id;
     this.name = product.name;
+    // @ts-ignore
     this.unitPrice = product.unitPrice;
     this.imageUrl = product.imageUrl;
     this.quantity = 1;
