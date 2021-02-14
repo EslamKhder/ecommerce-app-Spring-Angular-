@@ -40,4 +40,8 @@ export class CartDetailsComponent implements OnInit {
   removeItem(temp: CartItem){
     this.cartService.removeItem(temp);
   }
+
+  remove(tempCartItem: CartItem) {
+    this.cartService.remove(tempCartItem);
+  }
 }
