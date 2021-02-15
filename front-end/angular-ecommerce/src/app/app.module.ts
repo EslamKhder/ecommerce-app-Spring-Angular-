@@ -12,11 +12,14 @@ import { ProductDetailsComponent } from './componants/product-details/product-de
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
 import { CartStatusComponent } from './componants/cart-status/cart-status.component';
 import { CartDetailsComponent } from './componants/cart-details/cart-details.component';
+import { CheckOutComponent } from './componants/check-out/check-out.component';
 
 // http://localhost:4200/
 const routes: Routes = [
   // http://localhost:4200/category/id
   {path: 'category/:id', component:ProductsComponent},
+  // http://localhost:4200/category/id
+  {path: 'checkout', component:CheckOutComponent},
   // http://localhost:4200/category/id
   {path: 'cartdetails', component:CartDetailsComponent},
   // http://localhost:4200/search/key
@@ -37,7 +40,8 @@ const routes: Routes = [
     SearchComponent,
     ProductDetailsComponent,
     CartStatusComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    CheckOutComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

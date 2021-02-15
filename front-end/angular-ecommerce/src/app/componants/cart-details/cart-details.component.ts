@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CartItem} from '../../model/cart-item';
 import {CartServiceService} from '../../services/cart-service.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cart-details',
@@ -12,7 +13,8 @@ export class CartDetailsComponent implements OnInit {
   price: number = 0;
   total: number = 0;
 
-  constructor(private cartService: CartServiceService) { }
+  constructor(private cartService: CartServiceService,
+              private route: Router) { }
 
   ngOnInit(): void {
     this.showData()
@@ -43,5 +45,9 @@ export class CartDetailsComponent implements OnInit {
 
   remove(tempCartItem: CartItem) {
     this.cartService.remove(tempCartItem);
+  }
+
+  done() {
+    this.route.navigateByUrl("/checkout");
   }
 }
