@@ -11,7 +11,6 @@ export class CheckOutComponent implements OnInit {
   // @ts-ignore
   checkoutGroup: FormGroup;
 
-
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -25,6 +24,7 @@ export class CheckOutComponent implements OnInit {
   }
 
   done() {
+    console.log("Data : ")
     console.log(this.checkoutGroup.get('customer')?.value)
   }
 }
