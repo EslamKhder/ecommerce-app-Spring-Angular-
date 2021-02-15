@@ -24,7 +24,6 @@ export class CheckOutComponent implements OnInit {
   }
 
   done() {
-    console.log("Data : ")
     console.log(this.checkoutGroup.get('customer')?.value)
   }
 }
