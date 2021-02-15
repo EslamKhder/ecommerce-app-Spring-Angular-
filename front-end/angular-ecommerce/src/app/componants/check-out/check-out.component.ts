@@ -11,6 +11,9 @@ export class CheckOutComponent implements OnInit {
   // @ts-ignore
   checkoutGroup: FormGroup;
 
+  totalQuantity: number = 0;
+  totalPrice: number = 0;
+
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -50,5 +53,15 @@ export class CheckOutComponent implements OnInit {
     console.log(this.checkoutGroup.get('shippingAddress')?.value)
     console.log(this.checkoutGroup.get('billingAddress')?.value)
     console.log(this.checkoutGroup.get('creditCard')?.value)
+
+  }
+
+  copyShippingAddressToBillingAddress(event: Event) {
+    if((<HTMLInputElement>event.target).checked){
+      this.checkoutGroup.controls.billingAddress
+        .setValue(this.checkoutGroup.controls.shippingAddress.value)
+    } else {
+      this.checkoutGroup.controls.billingAddress.reset();
+    }
   }
 }
