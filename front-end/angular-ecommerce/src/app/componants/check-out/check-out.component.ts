@@ -15,8 +15,8 @@ export class CheckOutComponent implements OnInit {
   creditCardMonths: number[] = [];
   creditCardYear: number[] = [];
   countries: Country[] = [];
-  states: State[] = [];
-  statsBill: State[] = [];
+  statesShipping: State[] = [];
+  statsBilling: State[] = [];
   // @ts-ignore
   checkoutGroup: FormGroup;
 
@@ -114,27 +114,24 @@ export class CheckOutComponent implements OnInit {
   getCountries(){
     this.places.getAllCountries().subscribe(
       data => {
-        this.countries = data;
+        this.countries = data,
+        this.checkoutGroup.get('shippingAddress')?.get('country')?.setValue(data[0])
+        this.checkoutGroup.get('billingAddress')?.get('country')?.setValue(data[0])
+
       }
     )
   }
 
-  getStates() {
-    const formGroup = this.checkoutGroup.get('shippingAddress');
+  getStates(key: string) {
+    const formGroup = this.checkoutGroup.get(key);
     const codeCountry = formGroup?.value.country.code;
     this.places.getAllStates(codeCountry).subscribe(
       data => {
-        this.states = data
-      }
-    )
-  }
-
-  getStatesBill() {
-    const formGroup = this.checkoutGroup.get('billingAddress');
-    const codeCountry = formGroup?.value.country.code;
-    this.places.getAllStates(codeCountry).subscribe(
-      data => {
-        this.statsBill = data
+        if(key === 'shippingAddress'){
+          this.statesShipping = data
+        } else {
+          this.statsBilling = data
+        }
       }
     )
   }
