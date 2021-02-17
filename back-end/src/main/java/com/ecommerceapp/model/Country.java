@@ -1,9 +1,9 @@
 package com.ecommerceapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -17,6 +17,7 @@ public class Country extends BaseEntity{
     @Column(name = "name")
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "country",fetch = FetchType.LAZY)
     private Set<State> states;
 }
