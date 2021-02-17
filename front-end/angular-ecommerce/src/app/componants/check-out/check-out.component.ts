@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {DateServiceService} from '../../services/date-service.service';
 import {Country} from '../../model/country';
 import {PlacesService} from '../../services/places.service';
+import {State} from '../../model/state';
 
 @Component({
   selector: 'app-check-out',
@@ -14,7 +15,8 @@ export class CheckOutComponent implements OnInit {
   creditCardMonths: number[] = [];
   creditCardYear: number[] = [];
   countries: Country[] = [];
-
+  states: State[] = [];
+  statsBill: State[] = [];
   // @ts-ignore
   checkoutGroup: FormGroup;
 
@@ -113,6 +115,26 @@ export class CheckOutComponent implements OnInit {
     this.places.getAllCountries().subscribe(
       data => {
         this.countries = data;
+      }
+    )
+  }
+
+  getStates() {
+    const formGroup = this.checkoutGroup.get('shippingAddress');
+    const codeCountry = formGroup?.value.country.code;
+    this.places.getAllStates(codeCountry).subscribe(
+      data => {
+        this.states = data
+      }
+    )
+  }
+
+  getStatesBill() {
+    const formGroup = this.checkoutGroup.get('billingAddress');
+    const codeCountry = formGroup?.value.country.code;
+    this.places.getAllStates(codeCountry).subscribe(
+      data => {
+        this.statsBill = data
       }
     )
   }
