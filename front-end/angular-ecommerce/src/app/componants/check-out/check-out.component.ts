@@ -74,8 +74,10 @@ export class CheckOutComponent implements OnInit {
     if((<HTMLInputElement>event.target).checked){
       this.checkoutGroup.controls.billingAddress
         .setValue(this.checkoutGroup.controls.shippingAddress.value)
+      this.statsBilling = this.statesShipping
     } else {
       this.checkoutGroup.controls.billingAddress.reset();
+      this.statsBilling = []
     }
   }
   getMonths(){
