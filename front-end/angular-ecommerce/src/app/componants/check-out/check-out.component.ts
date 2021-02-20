@@ -4,6 +4,7 @@ import {DateServiceService} from '../../services/date-service.service';
 import {Country} from '../../model/country';
 import {PlacesService} from '../../services/places.service';
 import {State} from '../../model/state';
+import {SpaceValidator} from '../../model/space-validator';
 
 @Component({
   selector: 'app-check-out',
@@ -34,12 +35,18 @@ export class CheckOutComponent implements OnInit {
     this.checkoutGroup = this.formBuilder.group({ // form
       customer: this.formBuilder.group({
         firstName: new FormControl('',
-          [Validators.required,Validators.minLength(5)]),
+          [Validators.required,
+            Validators.minLength(5),
+            SpaceValidator.noSpace
+          ]),
         lastName: new FormControl('',
-          [Validators.required,Validators.minLength(5)]),
+          [Validators.required,
+            Validators.minLength(5),
+            SpaceValidator.noSpace]),
         email: new FormControl('',
           [Validators.required,
-            Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')])
+            Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$'),
+            SpaceValidator.noSpace])
       }),
       shippingAddress: this.formBuilder.group({
         country: [''],
