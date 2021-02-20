@@ -39,7 +39,7 @@ export class CheckOutComponent implements OnInit {
           [Validators.required,Validators.minLength(5)]),
         email: new FormControl('',
           [Validators.required,
-            Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\\\.[a-z]{2,4}$')])
+            Validators.pattern('^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$')])
       }),
       shippingAddress: this.formBuilder.group({
         country: [''],
@@ -65,8 +65,19 @@ export class CheckOutComponent implements OnInit {
       })
     })
   }
-
+  get fName(){
+    return this.checkoutGroup.get('customer.firstName');
+  }
+  get lName(){
+    return this.checkoutGroup.get('customer.lastName');
+  }
+  get email(){
+    return this.checkoutGroup.get('customer.email');
+  }
   done() {
+    if (this.checkoutGroup.invalid) {
+      this.checkoutGroup.markAllAsTouched()
+    }
     console.log(this.checkoutGroup.get('customer')?.value)
     console.log(this.checkoutGroup.get('shippingAddress')?.value)
     console.log(this.checkoutGroup.get('billingAddress')?.value)
@@ -142,3 +153,9 @@ export class CheckOutComponent implements OnInit {
     )
   }
 }
+/*
+
+if(this.checkoutGroup.invalid){
+      this.checkoutGroup.markAllAsTouched()
+    }
+* */

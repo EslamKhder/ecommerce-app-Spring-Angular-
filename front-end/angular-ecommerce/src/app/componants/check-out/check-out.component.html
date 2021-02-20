@@ -13,14 +13,16 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="firstName" type="text">
-                <div class="stu">
-                  <div class="alert alert-danger">
+
+                <div *ngIf="fName?.invalid && (fName?.dirty || fName?.touched)" class="stu">
+                  <div *ngIf="fName?.errors?.required" class="alert alert-danger">
                     First Name is Required
                   </div>
-                  <div class="alert alert-danger">
+                  <div *ngIf="fName?.errors?.minlength" class="alert alert-danger">
                     First Name must be at least 5 char long
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -30,11 +32,11 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="lastName" type="text">
-                <div class="stu">
-                  <div class="alert alert-danger">
+                <div *ngIf="lName?.invalid && (lName?.dirty || lName?.touched)" class="stu">
+                  <div *ngIf="lName?.errors?.required" class="alert alert-danger">
                     Last Name is Required
                   </div>
-                  <div class="alert alert-danger">
+                  <div *ngIf="lName?.errors?.minlength" class="alert alert-danger">
                     Last Name must be at least 5 char long
                   </div>
                 </div>
@@ -47,12 +49,12 @@
             <div class="col-md-9">
               <div class="input-space">
                 <input formControlName="email" type="text">
-                <div class="stu">
-                  <div class="alert alert-danger">
+                <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="stu">
+                  <div *ngIf="email?.errors?.required" class="alert alert-danger">
                     Email is Required
                   </div>
-                  <div class="alert alert-danger">
-                    Email must be Invalid
+                  <div *ngIf="email?.errors?.pattern" class="alert alert-danger">
+                    email must be a valid email address format
                   </div>
                 </div>
               </div>
